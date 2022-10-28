@@ -1,25 +1,15 @@
 <script>
-  function setup(){
-    var canvas = createCanvas(<%= @width %>,<%= @height %>).parent("#p5canvas");
-    noStroke();
+  let img;
+
+  function preload() {
+    img = loadImage('<%= (rails_storage_proxy_path(photo.image))%>');
   }
 
-  function colorPicker(){
-    var r = map(mouseX,0,width,0,255);
-    var g = map(mouseY,0,height,0,255);
-    var b = map(mouseY,0,width,0,255);
-    return color(r,g,b);
+  function setup(){
+    var canvas = createCanvas(<%= @width %>,<%= @height %>).parent("#p5canvas");
+    image(img, 0, 0);
   }
 
   function draw(){
-    if(mouseIsPressed){
-      drawCircles();
-    }
-  }
-
-  function drawCircles(){
-    var c = colorPicker();
-    fill(c);
-    ellipse(mouseX,mouseY,20,20);
   }
 </script>
