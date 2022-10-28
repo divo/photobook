@@ -6,6 +6,8 @@ class PhotosController < ApplicationController
 
   def show
     set_photo
+    @width ||= 800
+    @height ||= 600
   end
 
   def new

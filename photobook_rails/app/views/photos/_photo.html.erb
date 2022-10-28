@@ -1,7 +1,7 @@
 <div id="<%= dom_id photo %>">
   <p>
     <strong>Image:</strong>
-    <image src="<%=(url_for(photo.image))%>">
+    <!-- <image src="<%=(url_for(photo.image))%>"> -->
     <%= link_to photo.image.filename, photo.image if photo.image.attached? %>
   </p>
 
