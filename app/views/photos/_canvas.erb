@@ -1,15 +1,22 @@
 <script>
-  let img;
+  console.log('page');
 
-  function preload() {
-    img = loadImage('<%= (rails_storage_proxy_path(photo.image))%>');
-  }
+const settings = {
+  dimensions: [ 2048, 2048 ]
+};
 
-  function setup(){
-    var canvas = createCanvas(<%= @width %>,<%= @height %>).parent("#p5canvas");
-    image(img, 0, 0);
-  }
+const sketch = ({width, height, canvas}) => {
+  return ({ context, width, height }) => {
+    context.fillStyle = 'red';
+    context.fillRect(0, 0, width, height);
+  };
+};
 
-  function draw(){
-  }
+const start = async () => {
+  canvasSketch(sketch, settings);
+}
+
+start();
+
+
 </script>
