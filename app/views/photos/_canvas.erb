@@ -1,22 +1,32 @@
 <script>
-  console.log('page');
+  let img;
 
-const settings = {
-  dimensions: [ 2048, 2048 ]
-};
-
-const sketch = ({width, height, canvas}) => {
-  return ({ context, width, height }) => {
-    context.fillStyle = 'red';
-    context.fillRect(0, 0, width, height);
+  const settings = {
+    dimensions: [ 2048, 2048 ]
   };
-};
 
-const start = async () => {
-  canvasSketch(sketch, settings);
-}
+  const sketch = ({width, height, canvas}) => {
+    return ({ context, width, height }) => {
+        context.fillStyle = 'red';
+        context.fillRect(0, 0, width, height);
+        context.drawImage(img, 0, 0, width, height);
+      };
+  };
 
-start();
+  const loadImage = async (url) => {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+        img.onload = () => resolve(img);
+        img.onerror = () => reject();
+        img.src = url;
+      });
+  };
 
+  const start = async () => {
+    img = await loadImage('<%= (rails_storage_proxy_path(photo.image))%>')
+    canvasSketch(sketch, settings);
+  }
+
+  start();
 
 </script>
