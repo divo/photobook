@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+div .photo-page {
+  height: 600px;
+  width: 800px;
+}
