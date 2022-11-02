@@ -7,11 +7,11 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <script src="https://unpkg.com/canvas-sketch@latest/dist/canvas-sketch.umd.js"></script>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
+    <div id="canvas-test"></div>
     <%= yield %>
   </body>
 </html>
