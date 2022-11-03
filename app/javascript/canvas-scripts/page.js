@@ -6,8 +6,7 @@ const canvas = Canvas.createCanvas();
 let img;
 
 const settings = {
-  dimensions: [ 1048, 1048 ],
-  parent: document.getElementById("canvas-test"),
+  dimensions: [ 600, 400 ],
 };
 
 const sketch = ({width, height, canvas}) => {
@@ -17,10 +16,13 @@ const sketch = ({width, height, canvas}) => {
   };
 };
 
-const start = async () => {
+const start = async function (parent) {
+  settings.parent = parent;
   CanvasSketch.canvasSketch(sketch, settings)
 }
 
-start();
-
-
+document.addEventListener("turbo:load", function() {
+  document.querySelectorAll('.photo-page').forEach(function(canvas_tag) {
+    start(canvas_tag);
+  });
+});

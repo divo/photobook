@@ -2,4 +2,6 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 
-import "canvas/page"
+import "canvas-scripts/page"
+import Canvas from 'canvas'
+import 'canvas-scripts/page'
