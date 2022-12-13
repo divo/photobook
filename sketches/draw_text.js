@@ -1,4 +1,4 @@
-export const draw_text = (text, width, pos, fontSize, textSafeArea, context) => {
+export const draw_text = (text, x, y, fontSize, context) => {
   const transform = context.getTransform();
   const x_scale = Math.ceil(transform.a);
   const y_scale = Math.ceil(transform.d);
@@ -8,5 +8,5 @@ export const draw_text = (text, width, pos, fontSize, textSafeArea, context) => 
   context.fillStyle = 'rgb(126, 123, 127)';
   context.textBaseline = 'middle';
 
-  context.fillText(text, (width / 2) * x_scale, (pos.y + pos.s_height + textSafeArea) * y_scale);
+  context.fillText(text, x * x_scale, y * y_scale);
 };
