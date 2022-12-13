@@ -19,7 +19,11 @@ export const photo_sketch = ({width, height, canvas, data}) => {
     context.fillRect(0, 0, width, height);
 
     context.drawImage(img, pos.x, pos.y, pos.s_width, pos.s_height);
-    draw_text(address, width / 2, pos.y + pos.s_height + textSafeArea, fontSize, context);
+
+    context.fillStyle = 'rgb(126, 123, 127)';
+    context.textAlign = 'center';
+    context.textBaseline = 'bottom';
+    draw_text(address, width / 2, pos.y + pos.s_height + textSafeArea, "oblique", fontSize, context);
   };
 };
 

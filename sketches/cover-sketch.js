@@ -1,3 +1,5 @@
+import { draw_text } from './draw_text.js'
+
 export const cover_sketch = ({width, height, canvas, data}) => {
   return ({ context, width, height, data, canvas }) => {
     let scale;
@@ -22,9 +24,8 @@ export const cover_sketch = ({width, height, canvas, data}) => {
     const fontSize = 6; //TODO: What is going on with the scaling here? What is canvas sketch doing? It's all in mm??
     context.fillStyle = 'black';
     context.textAlign = 'center';
-    context.textBaseline = 'middle';
-    context.font = `normal ${fontSize}pt Helvetica`;
-    context.fillText(name, width / 2, s_height + (( height - s_height) / 2), width);
+    context.textBaseline = 'bottom';
+    draw_text(name, width / 2, s_height + (( height - s_height) / 2), "normal", fontSize, context);
  };
 };
 
