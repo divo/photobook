@@ -1,3 +1,5 @@
+import { draw_text } from './draw_text.js'
+
 export const photo_sketch = ({width, height, canvas, data}) => {
   let safe_area = 25; // mm!
   const fontSize = 4;
@@ -20,19 +22,6 @@ export const photo_sketch = ({width, height, canvas, data}) => {
     draw_text(address, width, pos, fontSize, textSafeArea, context);
   };
 };
-
-const draw_text = (text, width, pos, fontSize, textSafeArea, context) => {
-  const transform = context.getTransform();
-  const x_scale = Math.ceil(transform.a);
-  const y_scale = Math.ceil(transform.d);
-  context.setTransform(1, 0, 0, 1, 0, 0); // There is a bug in Cairo related to rendering text in a transformed canvas
-  context.font = `oblique ${fontSize * x_scale}px Helvetica`;
-  context.textAlign = 'center';
-  context.fillStyle = 'rgb(126, 123, 127)';
-  context.textBaseline = 'middle';
-
-  context.fillText(text, (width / 2) * x_scale, (pos.y + pos.s_height + textSafeArea) * y_scale);
-}
 
 const isTextCropped = (y, s_height, textSafeArea, scaledFontSize, height) => {
   return (y + s_height + textSafeArea + (scaledFontSize / 2)) > height - textSafeArea;
