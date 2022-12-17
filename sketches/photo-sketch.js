@@ -1,9 +1,9 @@
 import { draw_text } from './draw_text.js'
 
 export const photo_sketch = ({width, height, canvas, data}) => {
-  let safe_area = 25; // mm!
-  const fontSize = 4;
-  const textSafeArea = 10;
+  let safe_area = 12; // mm!
+  const fontSize = 3;
+  const textSafeArea = 8;
   const img = data['img'];
   const address = data['address'];
 
@@ -27,8 +27,9 @@ export const photo_sketch = ({width, height, canvas, data}) => {
   };
 };
 
-const isTextCropped = (y, s_height, textSafeArea, scaledFontSize, height) => {
-  return (y + s_height + textSafeArea + (scaledFontSize / 2)) > height - textSafeArea;
+const isTextCropped = (y, s_height, textSafeArea, fontSize, height) => {
+  //return (y + s_height + textSafeArea + (fontSize / 2)) > height - textSafeArea;
+  return (y + s_height + textSafeArea ) > height - (textSafeArea / 2);
 }
 
 const calculatePositions = (safe_area, img, width, height) => {
