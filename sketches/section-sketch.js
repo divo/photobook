@@ -9,14 +9,23 @@ export const section_sketch = ({width, height, canvas, data}) => {
     context.fillRect(0, 0, width, height);
 
     let scale;
-    let y = 0;
-    let x = 0;
+    let y = 30;
+    let x = 30;
 
     scale = width / img.width;
 
+    const s_width = img.width * scale;
     const s_height = img.height * scale;
+    let clip = 40;
 
-    context.drawImage(img, x, y, (img.width * scale), s_height);
+    // This is a hack to figure out if we are rendering to pdf
+    if (scale < 1.0) {
+      clip = clip / scale;
+      x = x / scale;
+      y = y / scale;
+    }
+
+    context.drawImage(img, x, y, img.width - clip, img.height - clip, 0, 0, (img.width * scale), s_height);
 
     // This is probably going to be a big pain in the ass when I go to render pdfs
     context.save();
