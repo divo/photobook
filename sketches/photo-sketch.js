@@ -6,6 +6,11 @@ export const photo_sketch = ({width, height, canvas, data}) => {
   const textSafeArea = 8;
   const img = data['img'];
   const address = data['address'];
+  let caption = data['caption'];
+
+  if (caption == null) {
+    caption = address;
+  }
 
   let pos = {};
 
@@ -23,7 +28,9 @@ export const photo_sketch = ({width, height, canvas, data}) => {
     context.fillStyle = 'rgb(126, 123, 127)';
     context.textAlign = 'center';
     context.textBaseline = 'bottom';
-    draw_text(address, width / 2, pos.y + pos.s_height + textSafeArea, "oblique", fontSize, context);
+    if (caption) {
+      draw_text(caption, width / 2, pos.y + pos.s_height + textSafeArea, "oblique", fontSize, context);
+    }
   };
 };
 
