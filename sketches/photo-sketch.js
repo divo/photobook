@@ -1,7 +1,7 @@
 import { draw_text } from './draw_text.js'
 
 export const photo_sketch = ({width, height, canvas, data}) => {
-  let safe_area = 12; // mm!
+  let safe_area = 18; // mm!
   const fontSize = 3;
   const textSafeArea = 8;
   const img = data['img'];
